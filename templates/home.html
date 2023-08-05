@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <header class="header">Book your next holiday now</header>
+    <form class="searchform" method="POST">
+
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button type="submit">Submit</button>
+
+    </form>
+
+
+{% endblock %}
