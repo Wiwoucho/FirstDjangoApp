@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href=" {% static 'css/stylesheet.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <div id="trapezoid">
+            {% if user.is_authenticated %}
+            <a href="{% url 'home' %}" class="expandHome">Home</a>
+            <a href="{% url 'Logout' %}" class="Logout">Log Out</a>
+            <a href="{% url 'AddBooking' %}" class="expandHome">Add A booking</a>
+            <a href="{% url 'AboutUs' %}" class="expandHome">About us </a>
+            {% endif %}
+            <a href="{% url 'home' %}" class="expandHome1">Home</a>
+            <a href="{% url 'Login' %}" class="expandHome1">Log In</a>
+            <a href="{% url 'AddBooking' %}" class="expandHome">Add A booking</a>
+            <a href="{% url 'AboutUs' %}" class="expandHome">About us </a>
+        </div>
+    </nav>
+{% block content %}
+{% endblock %}
+</body>
+</html>
