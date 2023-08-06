@@ -49,7 +49,7 @@ class LoginView(views.View):
 class RegistrationView(views.CreateView):
     template_name = 'registration.html'
     form_class = RegistrationForm
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('Login')
 
 class MyLogoutoView(views.View):
     def get(self, request, *args, **kwargs):

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="profile_details">
+        <h2>Profile details</h2>
+            {% if not user.profile_picture %}
+            <img src='{% static 'images/account-6491185_1280.png' %}' alt="Profile"  class="profile_picture">
+            {% else %}
+            {% endif %}
+            <p>First Name: {{ user.first_name }}</p>
+            <p>Last Name: {{ user.last_name }}</p>
+            <p>Email Address: {{ user.email }}</p>
+            <button type="submit">Edit profile</button>
+            <button type="submit">Delete profile</button>
+    </div>
+
+{% endblock %}

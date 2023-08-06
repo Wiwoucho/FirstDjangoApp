@@ -1,8 +1,7 @@
 from django.db import models
 from django.core import validators
 from django.contrib.auth.models import User
-from .validators import atleast_one_digit
-from django.core.exceptions import ValidationError
+
 
 
 class AddBookingModel(models.Model):
