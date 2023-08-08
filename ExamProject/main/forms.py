@@ -14,7 +14,6 @@ class RegistrationForm(auth_forms.UserCreationForm):
         max_length = 100
     )
 
-
     class Meta(auth_forms.UserCreationForm.Meta):
         fields = auth_forms.UserCreationForm.Meta.fields + ('email', 'first_name', 'last_name')
 
@@ -23,6 +22,8 @@ class RegistrationForm(auth_forms.UserCreationForm):
         self.fields['username'].help_text = None
         self.fields['password1'].help_text = None
         self.fields['password2'].help_text = None
+
+
 class LoginForm(forms.ModelForm):
     class Meta:
         model = LoginModel
