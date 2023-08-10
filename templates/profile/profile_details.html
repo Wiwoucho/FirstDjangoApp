@@ -6,6 +6,7 @@
             {% if not user.profile_picture %}
             <img src='{% static 'images/account-6491185_1280.png' %}' alt="Profile"  class="profile_picture">
             {% else %}
+                <img src='{{ user.profile_picture }}' alt="Profile" class="profile_picture">
             {% endif %}
             <p>First Name: {{ user.first_name }}</p>
             <p>Last Name: {{ user.last_name }}</p>

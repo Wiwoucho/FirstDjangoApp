@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <form class="editprofileform">
+    <form class="editprofileform" method="post">
         {{ form.as_p }}
+        {% csrf_token %}
         <button type="submit">apply changes</button>
     </form>
 

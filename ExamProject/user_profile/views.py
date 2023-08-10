@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic as views
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
@@ -32,5 +32,18 @@ class edit_profile_view(LoginRequiredMixin, views.View):
         }
         return render(request, self.template_name, context)
 
+    def post(self, request, pk):
+        user = get_object_or_404(User, pk=pk)
+        form = ProfileEditForm(request.POST, request.FILES, instance=user)
+
+        if form.is_valid():
+            form.update_user(user)
+            return redirect('profile_details', pk=user.pk)
+        else:
+            context = {
+                'form': form,
+                'user': user,
+            }
+            return render(request, self.template_name, context)
 
 
