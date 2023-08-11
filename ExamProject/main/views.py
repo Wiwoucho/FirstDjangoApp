@@ -4,6 +4,7 @@ from django.views import generic as views
 from .forms import PictureForm, LoginForm, RegistrationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import BookingImageModel
 
 
 class AddBookingView(LoginRequiredMixin, views.View):
@@ -12,16 +13,22 @@ class AddBookingView(LoginRequiredMixin, views.View):
 
     def get(self, request):
         form = PictureForm()
+        images = BookingImageModel.objects.all()
         return render(request, 'AddBooking.html', {'form': form})
 
     def post(self, request):
         form = PictureForm(request.POST, request.FILES)
+        images = request.FILES.getlist('images')
+
+        for image in images:
+            BookingImageModel.objects.create(images=images)
+
         if form.is_valid():
-            picture = form.save(commit=False)
-            picture.user = request.user
-            picture.save()
+            picture_form = form.save(commit=False)
+            picture_form.user = request.user
+            picture_form.save()
             return redirect('home')
-        return render(request, 'AddBooking.html', {'form': form})
+        return render(request, 'AddBooking.html', {'form': form, 'images': images})
 
 class LoginView(views.View):
 

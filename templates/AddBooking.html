@@ -6,6 +6,7 @@
         <h3>Add a property</h3>
         {% csrf_token %}
         {{ form.as_p }}
+        <input type="file" name="images" multiple>
         <button type="submit">Upload</button>
     </form>
 {% endblock %}

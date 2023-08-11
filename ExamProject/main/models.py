@@ -29,7 +29,7 @@ class AddBookingModel(models.Model):
 
 class BookingImageModel(models.Model):
     booking = models.ForeignKey(AddBookingModel, on_delete=models.CASCADE, related_name = 'images')
-    image = models.FileField(upload_to = 'user_pictures', blank = False, null = False)
+    images = models.FileField(upload_to = 'user_pictures', blank = False, null = False)
 
 
 

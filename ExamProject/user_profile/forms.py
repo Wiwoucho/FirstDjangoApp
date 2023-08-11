@@ -10,7 +10,7 @@ class ProfileEditForm(auth_forms.UserCreationForm):
 
     username = forms.CharField(max_length = 30)
     class Meta(auth_forms.UserCreationForm.Meta):
-        fields = auth_forms.UserCreationForm.Meta.fields + ('email', 'image', 'first_name', 'last_name')
+        fields = auth_forms.UserCreationForm.Meta.fields + ('email', 'first_name', 'last_name')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
