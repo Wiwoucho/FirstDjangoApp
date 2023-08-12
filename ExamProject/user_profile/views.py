@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 
 from .forms import ProfileEditForm
-from ..main.forms import RegistrationForm
+from ..main.models import AddBookingModel
 
 
 
@@ -14,8 +14,11 @@ class profile_details(views.View):
 
     def get(self, request, pk):
         user = get_object_or_404(User, pk=pk)
+        properties_info = AddBookingModel.objects.filter(user=user)
+
         context = {
             'user': user,
+            'properties_info': properties_info
         }
         return render(request, self.template_name, context)
 

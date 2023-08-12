@@ -21,13 +21,13 @@ class AddBookingView(LoginRequiredMixin, views.View):
         images = request.FILES.getlist('images')
 
         for image in images:
-            BookingImageModel.objects.create(images=images)
+            BookingImageModel.objects.create(booking = BookingImageModel, images=image)
 
         if form.is_valid():
             picture_form = form.save(commit=False)
             picture_form.user = request.user
             picture_form.save()
-            return redirect('home')
+            return redirect('profile_details', pk=request.user.pk)
         return render(request, 'AddBooking.html', {'form': form, 'images': images})
 
 class LoginView(views.View):

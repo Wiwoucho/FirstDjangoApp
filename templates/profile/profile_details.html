@@ -15,9 +15,21 @@
             <a href="#"><button type="submit">Delete profile</button></a>
     </div>
 
-    <div class="properties_details">
-        <h2>Properties statistics</h2>
+ <div class="properties_details">
+    <h2>Properties statistics</h2>
+    <ul class="properties_list">
+        {% for property_info in properties_info %}
+            <li class="property_item">
+                <img src="{% static 'maldives-g95b36ec92_1920.jpg' %}" alt="#" class="properties_picture">
+                <h3> name: {{ property_info.name }}</h3>
+                <p>location: {{ property_info.locations }}</p>
+                <p>Guests: {{ property_info.guests }}</p>
+                <p>Rent per day: {{ property_info.price }} lv.</p>
+                <a href="#">See Property</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
 
-    </div>
 
 {% endblock %}
